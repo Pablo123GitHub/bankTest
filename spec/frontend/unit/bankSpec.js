@@ -87,6 +87,14 @@ describe("Bank", function() {
 
     });
 
+    it("third element of the _transactions array shows debited amount", function() {
+      bank.withdraw(600);
+      var transaction = bank.showTransaction();
+      // expect(Date.now()).toEqual(1511791808370);
+      expect(transaction[2]).toEqual(600);
+
+    });
+
 
 
 
