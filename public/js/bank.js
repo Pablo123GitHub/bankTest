@@ -4,10 +4,13 @@
 
 (function(exports) {
   function Bank() {
-  
+
   };
 
   Bank.prototype = {
+    deposit: function(amount) {
+      amount
+    }
 
   };
 
