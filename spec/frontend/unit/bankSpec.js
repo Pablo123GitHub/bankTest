@@ -30,11 +30,18 @@ describe("Bank", function() {
 
     });
 
-    it("keeps transaction history and show money left in bank account ", function() {
+    it("keeps transaction history and show balance ", function() {
 
       bank.deposit(1000)
       bank.withdraw(500)
-      expect(bank.showStatement()).toEqual(500)
+      expect(bank.showBalance()).toEqual(500)
+
+    });
+
+    it("has a function that returns seconds to a date timesstamp ", function() {
+
+      var spyTime = 1511791808370;
+      expect(bank.returnDate(spyTime)).toContain("Mon Nov 27 2017 14:10");
 
     });
 

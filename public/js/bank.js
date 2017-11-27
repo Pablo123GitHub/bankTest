@@ -9,15 +9,23 @@
 
   Bank.prototype = {
     deposit: function(amount) {
-       this._statement += amount;
+      this._statement += amount;
 
     },
     withdraw: function(amount) {
-       this._statement -= amount;
+      this._statement -= amount;
     },
-    showStatement: function() {
+    showBalance: function() {
       return this._statement;
+    },
+
+    returnDate: function(timeInSecond) {
+      var d = new Date(parseInt(timeInSecond, 10));
+      var ds = d.toString('MM/dd/yy HH:mm:ss');
+return ds
     }
+
+
 
   };
 
