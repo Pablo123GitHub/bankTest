@@ -21,4 +21,4 @@ date || credit || debit || balance
 ```
 
 ### Testing framework
-I am using to unit test the code. In order to run the test open spec/frontend/SpecRunner.html on a browser. 
+I am using JASMINE to unit test the code. In order to run the test open spec/frontend/SpecRunner.html on a browser.
