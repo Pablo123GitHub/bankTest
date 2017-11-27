@@ -15,45 +15,35 @@
       this._statement += amount;
       var timeNow = Date.now();
       var d = new Date(parseInt(timeNow, 10));
-      var ds = d.toString('MM/dd/yy HH:mm:ss');
+      var ds = d.toString('MM/dd/yy').slice(0, -24);
       this._transactions.push(ds);
       this._transactions.push(amount);
-      this._transactions.push("");
+      this._transactions.push("N/A");
       this._transactions.push(this._statement);
-
-
-      this._arrWithTransactions.push(this._transactions);
-
     },
 
     withdraw: function(amount) {
       this._statement -= amount;
+      // var timeNow = Date.now();
+      // var d = new Date(parseInt(timeNow, 10));
+      // var ds = d.toString('MM/dd/yy').slice(0, -24);
+      var dateString = this.formatDateStamp()
+      this.insertTransaction(dateString);
+      this.insertTransaction("N/A");
+      this.insertTransaction(amount);
+      this.insertTransaction(this._statement);
+
+    },
+
+    formatDateStamp: function(){
       var timeNow = Date.now();
       var d = new Date(parseInt(timeNow, 10));
-      var ds = d.toString('MM/dd/yy HH:mm:ss');
-      this._transactions.push(ds);
-      this._transactions.push("");
-      this._transactions.push(amount);
-      this._transactions.push(this._statement);
-
-
-      this._arrWithTransactions.push(this._transactions);
-
+      var ds = d.toString('MM/dd/yy').slice(0, -24);
+      return ds;
     },
 
     showBalance: function() {
       return this._statement;
-    },
-
-    returnDate: function(timeInSecond) {
-
-      var d = new Date(parseInt(timeInSecond, 10));
-      var ds = d.toString('MM/dd/yy HH:mm:ss');
-      return ds
-    },
-
-    showTransactionArr: function() {
-      return this._arrWithTransactions;
     },
 
     showTransaction: function() {
@@ -61,16 +51,24 @@
     },
 
 
-    insertTransactionInArr: function(transArr) {
-      this._arrWithTransactions.push(transArr);
-    },
-
     insertTransaction: function(transaction) {
-      this.transactions.push(transaction)
+      this._transactions.push(transaction)
     },
 
 
-
+    printPretty: function(transactions) {
+      var transactionFormatted = [];
+      var newResult = [];
+      for (let i = 0; i < transactions.length; i++) {
+        transactionFormatted.push(transactions[i])
+        if (transactionFormatted.length % 4 == 0) {
+          var transLength = transactionFormatted.length;
+          newResult.push(transactionFormatted.slice(transLength - 4, transLength));
+        }
+      };
+      var finalResult = newResult.map(x => x.join(" || "));
+      return finalResult.join("\r");
+    }
   };
 
   exports.Bank = Bank;

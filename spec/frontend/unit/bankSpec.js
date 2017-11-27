@@ -38,42 +38,15 @@ describe("Bank", function() {
 
     });
 
-    it("has a function that returns seconds to a date timesstamp ", function() {
-
-      var spyTime = 1511791808370;
-      expect(bank.returnDate(spyTime)).toContain("Mon Nov 27 2017 14:10");
-
-    });
-
-    it("adds a new transaction to internal array arrTransaction when any transaction is performed", function() {
-
-      bank.deposit(1000);
-      bank.deposit(2000);
-      var transactionTwo = bank.showTransactionArr();
-      // console.log(transactionTwo);
-      expect(transactionTwo.length).toEqual(2);
-
-
-    });
-
     it("first element of the _transactions array is date/timeStamp now", function() {
-
-      // var Date = {
-      //   now: function(value) {
-      //     bar = value;
-      //   }
-      // };
-      //
-      // spyOn(Date, "now").and.returnValue(1511791808370);
 
       bank.deposit(1000);
       var transaction = bank.showTransaction();
 
       var timeNow = Date.now();
       var d = new Date(parseInt(timeNow, 10));
-      var ds = d.toString('MM/dd/yy HH:mm:ss');
+      var ds = d.toString('MM/dd/yy').slice(0, -24);
 
-      // expect(Date.now()).toEqual(1511791808370);
       expect(transaction[0]).toEqual(ds);
 
     });
@@ -82,7 +55,7 @@ describe("Bank", function() {
 
       bank.deposit(1000);
       var transaction = bank.showTransaction();
-      // expect(Date.now()).toEqual(1511791808370);
+
       expect(transaction[1]).toEqual(1000);
 
     });
@@ -90,18 +63,27 @@ describe("Bank", function() {
     it("third element of the _transactions array shows debited amount", function() {
       bank.withdraw(600);
       var transaction = bank.showTransaction();
-      // expect(Date.now()).toEqual(1511791808370);
-      expect(transaction[2]).toEqual(600);
 
+      expect(transaction[2]).toEqual(600);
     });
 
     it("seventh element of the _transactions array shows balance of the second transaction", function() {
       bank.deposit(1000);
       bank.withdraw(600);
       var transaction = bank.showTransaction();
+
       expect(transaction[7]).toEqual(400);
     });
 
+    it("displays statement with correct format ", function() {
+      bank.deposit(1000);
+      bank.withdraw(600);
+      var timeInSecond = Date.now();
+      var transactions = bank.showTransaction();
+
+      expect(bank.printPretty(transactions)).toEqual("Mon Nov 27 2017 || 1000 || N/A || 1000\rMon Nov 27 2017 || N/A || 600 || 400")
+
+    });
 
   });
 });
