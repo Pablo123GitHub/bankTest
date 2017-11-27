@@ -21,6 +21,7 @@
       this._transactions.push("");
       this._transactions.push(this._statement);
 
+
       this._arrWithTransactions.push(this._transactions);
 
     },
@@ -34,7 +35,8 @@
       this._transactions.push("");
       this._transactions.push(amount);
       this._transactions.push(this._statement);
-      
+
+
       this._arrWithTransactions.push(this._transactions);
 
     },

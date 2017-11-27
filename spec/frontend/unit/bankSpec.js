@@ -95,11 +95,12 @@ describe("Bank", function() {
 
     });
 
-
-
-
-
-
+    it("seventh element of the _transactions array shows balance of the second transaction", function() {
+      bank.deposit(1000);
+      bank.withdraw(600);
+      var transaction = bank.showTransaction();
+      expect(transaction[7]).toEqual(400);
+    });
 
 
   });
