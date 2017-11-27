@@ -17,12 +17,26 @@
       var d = new Date(parseInt(timeNow, 10));
       var ds = d.toString('MM/dd/yy HH:mm:ss');
       this._transactions.push(ds);
+      this._transactions.push(amount);
+      this._transactions.push("");
+      this._transactions.push(this._statement);
+
       this._arrWithTransactions.push(this._transactions);
 
     },
 
     withdraw: function(amount) {
       this._statement -= amount;
+      var timeNow = Date.now();
+      var d = new Date(parseInt(timeNow, 10));
+      var ds = d.toString('MM/dd/yy HH:mm:ss');
+      this._transactions.push(ds);
+      this._transactions.push("");
+      this._transactions.push(amount);
+      this._transactions.push(this._statement);
+      
+      this._arrWithTransactions.push(this._transactions);
+
     },
 
     showBalance: function() {

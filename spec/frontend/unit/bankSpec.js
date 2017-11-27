@@ -49,7 +49,7 @@ describe("Bank", function() {
 
       bank.deposit(1000);
       bank.deposit(2000);
-      var transactionTwo = bank.showTransaction();
+      var transactionTwo = bank.showTransactionArr();
       // console.log(transactionTwo);
       expect(transactionTwo.length).toEqual(2);
 
@@ -78,11 +78,20 @@ describe("Bank", function() {
 
     });
 
+    it("second element of the _transactions array shows credited amount", function() {
 
-    it("I ll find out ", function() {
-
+      bank.deposit(1000);
+      var transaction = bank.showTransaction();
+      // expect(Date.now()).toEqual(1511791808370);
+      expect(transaction[1]).toEqual(1000);
 
     });
+
+
+
+
+
+
 
 
   });
