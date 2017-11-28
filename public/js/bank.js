@@ -2,12 +2,13 @@
 
 "use strict";
 
+
 (function(exports) {
   function Bank() {
     this._statement = 0;
     this._arrWithTransactions = [];
-    this._transactions = []
-
+    this._transactions = [];
+    
   };
 
   Bank.prototype = {
@@ -50,24 +51,14 @@
       return this._transactions;
     },
 
-
     insertTransaction: function(transaction) {
       this._transactions.push(transaction)
     },
 
-
     printPretty: function(transactions) {
-      var transactionFormatted = [];
-      var newResult = [];
-      for (let i = 0; i < transactions.length; i++) {
-        transactionFormatted.push(transactions[i])
-        if (transactionFormatted.length % 4 == 0) {
-          var transLength = transactionFormatted.length;
-          newResult.push(transactionFormatted.slice(transLength - 4, transLength));
-        }
-      };
-      var finalResult = newResult.map(x => x.join(" || "));
-      return finalResult.join("\r");
+
+    var printPretty = new PrintPretty();
+    return printPretty.printPretty(transactions);
     }
   };
 
