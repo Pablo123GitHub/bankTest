@@ -4,7 +4,7 @@
   function PrintPretty() {
 
   };
-  console.log("inside printpre");
+
   PrintPretty.prototype = {
     printPretty: function(transactions) {
       var transactionFormatted = [];

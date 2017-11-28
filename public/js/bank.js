@@ -8,7 +8,8 @@
     this._statement = 0;
     this._arrWithTransactions = [];
     this._transactions = [];
-    
+    this._printPretty = new PrintPretty();
+
   };
 
   Bank.prototype = {
@@ -57,8 +58,8 @@
 
     printPretty: function(transactions) {
 
-    var printPretty = new PrintPretty();
-    return printPretty.printPretty(transactions);
+    return this._printPretty.printPretty(transactions);
+
     }
   };
 
