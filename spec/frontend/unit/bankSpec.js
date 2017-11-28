@@ -79,9 +79,11 @@ describe("Bank", function() {
       bank.deposit(1000);
       bank.withdraw(600);
       var timeInSecond = Date.now();
+      var d = new Date(parseInt(timeInSecond, 10));
+      var ds = d.toString('MM/dd/yy').slice(0, -24);
       var transactions = bank.showTransaction();
 
-      expect(bank.printPretty(transactions)).toEqual("Tue Nov 28 2017 || 1000 || N/A || 1000\rTue Nov 28 2017 || N/A || 600 || 400")
+      expect(bank.printPretty(transactions)).toEqual(`${ds} || 1000 || N/A || 1000\r${ds} || N/A || 600 || 400`)
 
     });
 
