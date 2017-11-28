@@ -81,7 +81,7 @@ describe("Bank", function() {
       var timeInSecond = Date.now();
       var transactions = bank.showTransaction();
 
-      expect(bank.printPretty(transactions)).toEqual("Mon Nov 27 2017 || 1000 || N/A || 1000\rMon Nov 27 2017 || N/A || 600 || 400")
+      expect(bank.printPretty(transactions)).toEqual("Tue Nov 28 2017 || 1000 || N/A || 1000\rTue Nov 28 2017 || N/A || 600 || 400")
 
     });
 
