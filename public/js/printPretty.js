@@ -21,7 +21,5 @@
     }
   };
 
-
-
   exports.PrintPretty = PrintPretty;
 })(this);
