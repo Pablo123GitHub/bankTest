@@ -18,6 +18,10 @@
       };
       var finalResult = newResult.map(x => x.join(" || "));
       return finalResult.join("\r");
+    },
+
+    printHeader: function(){
+      return "date || credit || debit || balance";
     }
   };
 

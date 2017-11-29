@@ -25,11 +25,18 @@ describe("PrintPretty", function() {
     expect(bank.showTransaction()).toEqual([ds, 1000, "N/A", 1000, ds, "N/A", 600, 400])
 
   });
+
   it("formats nicely the array of value with printPretty function", function() {
     var transactions = bank.showTransaction();
 
     expect(printPretty.printPretty(transactions)).toEqual(`${ds} || 1000 || N/A || 1000\r${ds} || N/A || 600 || 400`)
 
   });
+
+  it("prints the header at the top of the statement", function() {
+    expect(printPretty.printHeader()).toEqual("date || credit || debit || balance")
+
+  });
+
 
 });
