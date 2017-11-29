@@ -37,7 +37,7 @@
 
     },
 
-    formatDateStamp: function(){
+    formatDateStamp: function() {
       var timeNow = Date.now();
       var d = new Date(parseInt(timeNow, 10));
       var ds = d.toString('MM/dd/yy').slice(0, -24);
@@ -58,9 +58,17 @@
 
     printPretty: function(transactions) {
 
-    return this._printPretty.printPretty(transactions);
+      return this._printPretty.printPretty(transactions);
 
+    },
+    printStatement: function(transactions) {
+
+      let result = this._printPretty.printPretty(transactions);
+      let header = this._printPretty.printHeader();
+      let finalResult = header + "\r" + result;
+      return finalResult;
     }
+
   };
 
   exports.Bank = Bank;
